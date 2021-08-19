@@ -1,5 +1,5 @@
 {
-  "name": "Callenge-Coordinadora",
+  "name": "Challenge-Coordinadora",
   "version": "1.0.0",
   "description": "",
   "main": "index.js",
@@ -10,15 +10,15 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/JuanEstebanCC/Callenge-Coordinadora.git"
+    "url": "git+https://github.com/JuanEstebanCC/Challenge-Coordinadora.git"
   },
   "keywords": [],
   "author": "Juan Esteban Cifuentes Castañeda",
   "license": "ISC",
   "bugs": {
-    "url": "https://github.com/JuanEstebanCC/Callenge-Coordinadora/issues"
+    "url": "https://github.com/JuanEstebanCC/Challenge-Coordinadora/issues"
   },
-  "homepage": "https://github.com/JuanEstebanCC/Callenge-Coordinadora#readme",
+  "homepage": "https://github.com/JuanEstebanCC/Challenge-Coordinadora#readme",
   "dependencies": {
     "cors": "^2.8.5",
     "dotenv": "^10.0.0",
