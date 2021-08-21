@@ -22,7 +22,7 @@ const documentation = require("../docs/docs");
 const exercises = require("./routes/exercises");
 
 app.use("/challenge", exercises);
-//app.use("/docs", documentation);
+app.use("/docs", documentation);
 
 // Create the server and set the port 5300 or the port on the .env file
 app.set("port", process.env.PORT || 8080);

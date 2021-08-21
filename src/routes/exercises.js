@@ -168,7 +168,7 @@ router.get("/tracking", (req, res) => {
                   },
                 };
               }
-              if (tipo === "etiqueta") {
+              else if (tipo === "etiqueta") {
                 let codigo_remision, nombre_destinatario, dir_destinatario;
                 let cantidad_checkpoints = 0;
                 let etiqueta1d = [];
@@ -207,6 +207,8 @@ router.get("/tracking", (req, res) => {
                     tracking: allCheckpoints,
                   },
                 };
+              }else{
+                res.json("Código no válido")
               }
               return response;
             })

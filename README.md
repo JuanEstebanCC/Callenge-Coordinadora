@@ -4,16 +4,14 @@
 ### Table of contents 
 - [Endpoints](#endpoints)
 - [Preguntas](#preguntas)
-- [Endpoints](#endpoints)
 - [Instalación](#instalacion)
-- [Swagger](#swagger)
 - [Video](#video)
 
 ### Preguntas 
 
 
 #### ¿Qué es una inyección de dependencias y para qué sirve?
-
+Es un patrón de diseño, donde la clase no tiene que crear un objeto por que es suministrado externamente, además de ser utilizado por una gran parte de frameworks, ayuda a dividir y delegar las responsabilidades haciendolás más claras de entender.
 
 #### Diferencias entre asíncrono y sincrono
 La programación sincrona realiza las instrucciones después de que la anterior haya terminado, es decir utiliza la anterior instrucción como condición para continuar, en la asincrona el paso se realizará incluso si la anterior secuencia no está terminada.
@@ -51,12 +49,47 @@ Significa que las peticiones que estamos enviando o los recursos que estamos sol
 
 ### Endpoints 
 
+>Los endpoints son anticipados por la ruta /challege, por ejemplo: http://localhost:8080/challenge/average
 
+Todos los endopoints se pueden encontrar en el archivo swagger, en la ruta: http://localhost:8080/docs
 
 ### Instalacion
 
+Esta API requiere <b>Node.js v10+</b>, y <b>ExpressJS v4+ </b> para funcionar.
 
-### Swagger
+Primero clonamos el repositorio en la rama main
+
+```bash
+git clone https://github.com/JuanEstebanCC/FIFA-21---API-REST.git
+```
+
+
+Abrimos la carpeta 
+
+```
+cd Challenge-Coordinadora
+```
+
+Instalamos las dependencias (se necesita tener NPM instalado)
+
+```
+npm install 
+```
+
+Corremos el servidor en el puerto (8080 por defecto)
+
+
+-En modo desarrollo
+
+```
+npm run dev
+```
+
+-En modo de producción
+
+```
+npm start
+```
 
 
 

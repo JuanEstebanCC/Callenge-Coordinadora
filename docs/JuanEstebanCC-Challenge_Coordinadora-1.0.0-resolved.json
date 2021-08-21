@@ -1,0 +1,442 @@
+{
+  "swagger": "2.0",
+  "info": {
+    "description": "This is a simple API for a challenge",
+    "version": "1.0.0",
+    "title": "API Coordinadora",
+    "contact": {
+      "email": "juanescifuentes75@gmail.com"
+    },
+    "license": {
+      "name": "Apache 2.0",
+      "url": "http://www.apache.org/licenses/LICENSE-2.0.html"
+    }
+  },
+  "host": "virtserver.swaggerhub.com",
+  "basePath": "/JuanEstebanCC/Challenge_Coordinadora/1.0.0",
+  "tags": [
+    {
+      "name": "Endpoints",
+      "description": "Routes for the challenge"
+    }
+  ],
+  "schemes": [
+    "https"
+  ],
+  "paths": {
+    "/average": {
+      "post": {
+        "tags": [
+          "Encuentra el error"
+        ],
+        "summary": "Retorna el promedio",
+        "description": "Dando 2 números se retorna su promedio después de sumarlos",
+        "consumes": [
+          "application/json"
+        ],
+        "produces": [
+          "application/json"
+        ],
+        "parameters": [
+          {
+            "in": "body",
+            "name": "Numbers",
+            "description": "Dos números enteros",
+            "required": false,
+            "schema": {
+              "$ref": "#/definitions/averageInput"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Sucessfull",
+            "schema": {
+              "type": "array",
+              "items": {
+                "$ref": "#/definitions/averageResponse"
+              }
+            }
+          },
+          "400": {
+            "description": "Invalid"
+          },
+          "500": {
+            "description": "Ha ocurrido un error"
+          }
+        }
+      }
+    },
+    "/string": {
+      "post": {
+        "tags": [
+          "String Manipulation"
+        ],
+        "summary": "Remove el último símbolo de exclamación",
+        "description": "Dando un string se validá si esta tiene uno o varios signos de exclamación y lo elimina según determinadas condiciones",
+        "consumes": [
+          "application/json"
+        ],
+        "produces": [
+          "application/json"
+        ],
+        "parameters": [
+          {
+            "in": "body",
+            "name": "String",
+            "description": "Un string con uno o varios signos de exclamación (!) al final",
+            "required": false,
+            "schema": {
+              "$ref": "#/definitions/stringInput"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Sucessfull",
+            "schema": {
+              "type": "array",
+              "items": {
+                "$ref": "#/definitions/stringResponse"
+              }
+            }
+          },
+          "400": {
+            "description": "Invalid"
+          },
+          "500": {
+            "description": "Ha ocurrido un error"
+          }
+        }
+      }
+    },
+    "/sumArray": {
+      "post": {
+        "tags": [
+          "SumArray"
+        ],
+        "summary": "Suma los elementos de un arreglo y devuelve varias de sus sumas",
+        "description": "Dando un array con números se calculará las suma de sus elementos, total, pares e impares y positivos",
+        "consumes": [
+          "application/json"
+        ],
+        "produces": [
+          "application/json"
+        ],
+        "parameters": [
+          {
+            "in": "body",
+            "name": "Array de numeros",
+            "description": "Un array de números",
+            "required": false,
+            "schema": {
+              "$ref": "#/definitions/sumArrayInput"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Sucessfull",
+            "schema": {
+              "type": "array",
+              "items": {
+                "$ref": "#/definitions/sumArrayResponse"
+              }
+            }
+          },
+          "400": {
+            "description": "Invalid"
+          },
+          "500": {
+            "description": "Ha ocurrido un error"
+          }
+        }
+      }
+    },
+    "/transformArray": {
+      "post": {
+        "tags": [
+          "TransformArray"
+        ],
+        "summary": "Transforma un array bidimensional de números y lo ordena",
+        "description": "Apartir de un array bidimensional de items alfanúmericos se transforma a uno unidimensional de números enteros y se ordena dependiendo de una variable (Ascendente o Descendente)",
+        "consumes": [
+          "application/json"
+        ],
+        "produces": [
+          "application/json"
+        ],
+        "parameters": [
+          {
+            "in": "body",
+            "name": "Array y el orden",
+            "description": "Un array de items alfanúmericos y el orden en que se quiera retornar",
+            "required": false,
+            "schema": {
+              "$ref": "#/definitions/transformArrayInput"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Sucessfull",
+            "schema": {
+              "type": "array",
+              "items": {
+                "$ref": "#/definitions/transformArrayResponse"
+              }
+            }
+          },
+          "400": {
+            "description": "Invalid"
+          },
+          "500": {
+            "description": "Ha ocurrido un error"
+          }
+        }
+      }
+    },
+    "/tracking/{codigo}": {
+      "get": {
+        "tags": [
+          "TrackingCoordinadora"
+        ],
+        "summary": "Se obtiene el tracking operativo referente a una guía en específico.",
+        "description": "Pasandolé por params un código ya sea de guía o de etiqueta el programa dectectará el tipo de código y devolverá una respuesta",
+        "consumes": [
+          "application/json"
+        ],
+        "produces": [
+          "application/json"
+        ],
+        "parameters": [
+          {
+            "name": "codigo",
+            "in": "path",
+            "description": "Un número de guía compuesto por 11 dígitos o una etiqueta 1d el cual está compuesto por 15 dígitos y siempre comienza con el número 7.",
+            "required": true,
+            "type": "number"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Sucessfull",
+            "schema": {
+              "type": "array",
+              "items": {
+                "$ref": "#/definitions/trackingRespone"
+              }
+            }
+          },
+          "400": {
+            "description": "Invalid"
+          },
+          "500": {
+            "description": "Ha ocurrido un error"
+          }
+        }
+      }
+    },
+    "/arrayScore": {
+      "post": {
+        "tags": [
+          "ArrayScore"
+        ],
+        "summary": "Apartir de un array de números se saca una puntuación total",
+        "description": "Dando un array de números se retorna una puntuación en base a unos criterios",
+        "consumes": [
+          "application/json"
+        ],
+        "produces": [
+          "application/json"
+        ],
+        "parameters": [
+          {
+            "name": "Array y el orden",
+            "in": "query",
+            "description": "Un array de items númericos positivos",
+            "required": false,
+            "type": "array",
+            "items": {
+              "type": "integer",
+              "format": "int64"
+            },
+            "collectionFormat": "multi"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Sucessfull",
+            "schema": {
+              "type": "array",
+              "items": {
+                "$ref": "#/definitions/arrayScoreResponse"
+              }
+            }
+          },
+          "400": {
+            "description": "Invalid"
+          },
+          "500": {
+            "description": "Ha ocurrido un error"
+          }
+        }
+      }
+    }
+  },
+  "definitions": {
+    "averageInput": {
+      "type": "object",
+      "properties": {
+        "a": {
+          "type": "number",
+          "format": "uuid",
+          "example": 1
+        },
+        "b": {
+          "type": "number",
+          "format": "uuid",
+          "example": 3
+        }
+      }
+    },
+    "averageResponse": {
+      "type": "object",
+      "properties": {
+        "response": {
+          "type": "number",
+          "format": "uuid",
+          "example": 2
+        }
+      }
+    },
+    "stringInput": {
+      "type": "object",
+      "properties": {
+        "string": {
+          "type": "string",
+          "format": "uuid",
+          "example": "Hi!"
+        }
+      }
+    },
+    "stringResponse": {
+      "type": "object",
+      "properties": {
+        "response": {
+          "type": "string",
+          "format": "uuid",
+          "example": "Hi"
+        }
+      }
+    },
+    "sumArrayInput": {
+      "type": "array",
+      "items": {
+        "type": "integer",
+        "format": "int64",
+        "example": ""
+      }
+    },
+    "sumArrayResponse": {
+      "type": "object",
+      "properties": {
+        "Suma de total": {
+          "type": "number",
+          "format": "uuid",
+          "example": 6
+        },
+        "Suma de los positivos y enteros": {
+          "type": "number",
+          "format": "uuid",
+          "example": 6
+        },
+        "Suma de los pares": {
+          "type": "number",
+          "format": "uuid",
+          "example": 2
+        },
+        "Suma de los impares": {
+          "type": "number",
+          "format": "uuid",
+          "example": 4
+        }
+      }
+    },
+    "transformArrayInput": {
+      "type": "object",
+      "properties": {
+        "order": {
+          "type": "string",
+          "format": "uuid",
+          "example": "ASC"
+        },
+        "array": {
+          "example": "[ [\"x\",2],[1,2],[1,\"s\"] ]"
+        }
+      }
+    },
+    "transformArrayResponse": {
+      "example": [
+        2,
+        2,
+        1,
+        1
+      ]
+    },
+    "arrayScoreResponse": {
+      "example": 13
+    },
+    "trackingRespone": {
+      "type": "object",
+      "properties": {
+        "isError": {
+          "type": "string",
+          "example": "False"
+        },
+        "status": {
+          "type": "string",
+          "example": "success"
+        },
+        "data": {
+          "$ref": "#/definitions/trackingRespone_data"
+        }
+      }
+    },
+    "trackingRespone_data_unidades": {
+      "type": "object",
+      "properties": {
+        "etiqueta1d": {
+          "type": "number",
+          "example": 734380016861001
+        },
+        "cantidad_checkpoints": {
+          "type": "number",
+          "example": 5
+        },
+        "tracking": {
+          "type": "array",
+          "items": {
+            "example": ""
+          }
+        }
+      }
+    },
+    "trackingRespone_data": {
+      "type": "object",
+      "properties": {
+        "codigo_remision": {
+          "type": "number",
+          "example": 34380016861
+        },
+        "nombre_destinatario": {
+          "type": "string",
+          "example": "KR 8 # 123 - 154 TO 5 AP 304 CONJUNTO RESIDENCIAL TREVI"
+        },
+        "unidades": {
+          "$ref": "#/definitions/trackingRespone_data_unidades"
+        }
+      }
+    }
+  }
+}
