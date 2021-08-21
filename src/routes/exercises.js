@@ -2,22 +2,26 @@
 const { Router, reponse } = require("express");
 const router = Router();
 
-router.get("/average", (req, res) => {
+router.post("/average", (req, res) => {
   let { a, b } = req.body;
   a = Number(a);
   b = Number(b);
-  class Challenge {
-    average(a = 0, b = 0) {
-      try {
-        const response = (a + b) / 2;
-        return response;
-      } catch (e) {
-        throw new TypeError("Ha ocurrido un error");
+  try {
+    class Challenge {
+      average(a = 0, b = 0) {
+        try {
+          const response = (a + b) / 2;
+          return response;
+        } catch (e) {
+          throw new TypeError("Ha ocurrido un error");
+        }
       }
     }
+    const challenge = new Challenge();
+    res.json(challenge.average(a, b));
+  } catch (e) {
+    throw new TypeError("Ha ocurrido un error: ", e);
   }
-  const challenge = new Challenge();
-  res.json(challenge.average(a, b));
 });
 
 router.post("/string", (req, res) => {
@@ -34,7 +38,7 @@ router.post("/string", (req, res) => {
     };
     res.json(manipulation(string));
   } catch (e) {
-    throw new TypeError("Ha ocurrido un error");
+    throw new TypeError("Ha ocurrido un error: ", e);
   }
 });
 
@@ -71,7 +75,37 @@ router.post("/sumArray", (req, res) => {
     };
     res.json(sum(array));
   } catch (e) {
-    throw new TypeError("Ha ocurrido un error");
+    throw new TypeError("Ha ocurrido un error: ", e);
   }
 });
+
+router.post("/transformArray", (req, res) => {
+  const { array, order } = req.body;
+  try {
+    const transform = (arr = [[,]], order = "") => {
+      let returnArray = [];
+      for (let i = 0; i < arr.length; i++) {
+        for (let j = 0; j < arr.length; j++) {
+          if (typeof arr[i][j] === "number" && Number.isInteger(arr[i][j])) {
+            returnArray.push(arr[i][j]);
+          }
+        }
+      }
+      return order === "ASC"
+        ? returnArray.sort((a, b) => b - a)
+        : order === "DESC"
+        ? returnArray.sort((a, b) => a - b)
+        : "No ingresaste un orden";
+    };
+    res.json(transform(array, order));
+  } catch (e) {
+    throw new TypeError("Ha ocurrido un error: ", e);
+  }
+});
+
+router.post("/myCows", (req, res) => {
+  try {
+  } catch (e) {}
+});
+
 module.exports = router;
